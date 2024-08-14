@@ -1,6 +1,6 @@
 # splitmate_flutter
 
-A new Flutter project.
+The Flutter part of the SplitMate app. I will record the weekly development progress in this file
 
 ## Getting Started
 
@@ -14,3 +14,8 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+
+## Weekly Progress
+
+### Week 04
