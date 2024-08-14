@@ -1,43 +1,12 @@
-import "dart:async";
-import "package:animate_do/animate_do.dart";
 import "package:flutter/material.dart";
-import "utils/validation_utils.dart";
+import "package:get/get.dart";
+import "package:animate_do/animate_do.dart";
+import "login_controller.dart";
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class LoginPage extends StatelessWidget {
+  final LoginController controller = Get.put(LoginController());
 
-  @override
-  State<StatefulWidget> createState() {
-    return LoginPageState();
-  }
-}
-
-class LoginPageState extends State<LoginPage> {
-  // This list contains images that shown on the login page
-  final List<String> images = [
-    "./assets/images/login_image01.png",
-    "./assets/images/login_image02.png",
-    "./assets/images/login_image03.png",
-    "./assets/images/login_image04.png",
-  ];
-
-  int activationIndex = 0;
-
-  Timer? timer; // Set timer as a member to avoid memory leak
-
-  void startTimer() {
-    Timer.periodic(const Duration(seconds: 5), (timer) {
-      setState(() {
-        activationIndex = (activationIndex + 1) % images.length;
-      });
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    startTimer();
-  }
+  LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -47,35 +16,33 @@ class LoginPageState extends State<LoginPage> {
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
-              const SizedBox(
-                height: 50,
-              ),
+              const SizedBox(height: 50),
               FadeInUp(
-                  child: Container(
-                height: 350,
-                child: Stack(
-                  children: images.asMap().entries.map((e) {
-                    return Positioned(
-                      top: 0,
-                      bottom: 0,
-                      left: 0,
-                      right: 0,
-                      child: AnimatedOpacity(
-                        duration: const Duration(seconds: 1),
-                        opacity: activationIndex == e.key ? 1 : 0,
-                        child: Image.asset(
-                          e.value,
-                          height: 400,
-                        ),
-                      ),
-                    );
-                  }).toList(),
+                child: Container(
+                  height: 350,
+                  child: Stack(
+                    children: controller.images.asMap().entries.map((e) {
+                      return Obx(() => Positioned(
+                            top: 0,
+                            bottom: 0,
+                            left: 0,
+                            right: 0,
+                            child: AnimatedOpacity(
+                              duration: const Duration(seconds: 1),
+                              opacity: controller.activationIndex.value == e.key
+                                  ? 1
+                                  : 0,
+                              child: Image.asset(
+                                e.value,
+                                height: 400,
+                              ),
+                            ),
+                          ));
+                    }).toList(),
+                  ),
                 ),
-              )),
-              const SizedBox(
-                height: 40,
               ),
-              // Username Input field (actually we use email to login)
+              const SizedBox(height: 40),
               FadeInUp(
                 delay: const Duration(microseconds: 800),
                 duration: const Duration(milliseconds: 1500),
@@ -134,7 +101,6 @@ class LoginPageState extends State<LoginPage> {
                           const TextStyle(color: Colors.black, fontSize: 18)),
                 ),
               ),
-
               FadeInUp(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -152,14 +118,10 @@ class LoginPageState extends State<LoginPage> {
                   ],
                 ),
               ),
-
               const SizedBox(height: 30),
-
               FadeInUp(
                 child: MaterialButton(
-                  onPressed: () {
-                    Navigator.of(context).pushReplacementNamed("/");
-                  },
+                  onPressed: () => controller.onLoginButtonPressed(),
                   height: 45,
                   padding:
                       const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
@@ -170,9 +132,7 @@ class LoginPageState extends State<LoginPage> {
                       style: TextStyle(color: Colors.white)),
                 ),
               ),
-
               const SizedBox(height: 30),
-
               FadeInUp(
                 delay: const Duration(milliseconds: 800),
                 duration: const Duration(milliseconds: 1500),
@@ -182,7 +142,7 @@ class LoginPageState extends State<LoginPage> {
                     TextButton(
                       onPressed: () {},
                       child: const Text(
-                        "Apply to be tanent",
+                        "Apply to be tenant",
                         style: TextStyle(
                             color: Colors.blue,
                             fontSize: 14.0,
@@ -199,5 +159,3 @@ class LoginPageState extends State<LoginPage> {
     );
   }
 }
-
-// 46386

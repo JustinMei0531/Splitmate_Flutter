@@ -37,6 +37,8 @@ dependencies:
   cupertino_icons: ^1.0.8
   animate_do: ^3.3.4
   http: ^0.13.3
+  fluttertoast: ^8.2.6
+  get:
 
 
 dev_dependencies:

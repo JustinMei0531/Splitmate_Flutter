@@ -1,6 +1,6 @@
 # splitmate_flutter
 
-The Flutter part of the SplitMate app. I will record the weekly development progress in this file
+The Flutter part of the SplitMate app. I will record the weekly development progress in this file.
 
 ## Getting Started
 
