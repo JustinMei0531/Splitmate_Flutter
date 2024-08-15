@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "./ui/login/login_page.dart";
 import "./ui/splash_screen/splash_screen.dart";
+import "./ui/apply/apply_page.dart";
 import "package:get/get.dart";
 
 class App extends StatelessWidget {
@@ -21,6 +22,7 @@ class App extends StatelessWidget {
       getPages: <GetPage<dynamic>>[
         GetPage(name: "/splash", page: () => const SplashScreen()),
         GetPage(name: "/login", page: () => LoginPage()),
+        GetPage(name: "/apply", page: () => ApplyPage()),
       ],
     );
   }

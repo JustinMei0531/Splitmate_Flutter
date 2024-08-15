@@ -19,3 +19,10 @@ samples, guidance on mobile development, and a full API reference.
 ## Weekly Progress
 
 ### Week 04
+1. The overall development route is clarified, and the entire project uses the GetX library as a state management tool;
+2. Rethink the project architecture(not determined, still need to talk with other group members in the weekly meeting);
+3. Implement three pages: Login page, apply page and splash screen.
+
+<img src="./static/screenshot_2024-08-15 165610.png" alt="splash screen" tyle="width:50px;height:100px;">
+<img src="./static/screenshot_2024-08-15 203104.png" alt="splash screen" tyle="width:50px;height:100px;">
+<img src="./static/screenshot_2024-08-15 203158.png" alt="splash screen" tyle="width:50px;height:100px;">

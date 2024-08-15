@@ -1,6 +1,6 @@
-import "package:flutter/material.dart";
-import "package:get/get.dart";
-import "package:animate_do/animate_do.dart";
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:animate_do/animate_do.dart';
 import "login_controller.dart";
 
 class LoginPage extends StatelessWidget {
@@ -46,59 +46,89 @@ class LoginPage extends StatelessWidget {
               FadeInUp(
                 delay: const Duration(microseconds: 800),
                 duration: const Duration(milliseconds: 1500),
-                child: TextField(
-                  decoration: InputDecoration(
-                      focusedBorder: OutlineInputBorder(
-                        borderSide:
-                            const BorderSide(color: Colors.black, width: 1.5),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      labelText: "Email",
-                      hintText: "Your email",
-                      hintStyle: const TextStyle(
-                          color: Colors.lightBlue, fontSize: 14.0),
-                      labelStyle: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400),
-                      prefixIcon: const Icon(Icons.person,
-                          color: Colors.black, size: 18),
-                      enabledBorder: OutlineInputBorder(
+                child: Column(
+                  children: [
+                    TextField(
+                      controller: controller.emailController,
+                      decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
                           borderSide:
-                              const BorderSide(color: Colors.grey, width: 2),
-                          borderRadius: BorderRadius.circular(10)),
-                      floatingLabelStyle:
-                          const TextStyle(color: Colors.black, fontSize: 18)),
+                              const BorderSide(color: Colors.black, width: 1.5),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        labelText: "Email",
+                        hintText: "Your email",
+                        hintStyle: const TextStyle(
+                            color: Colors.lightBlue, fontSize: 14.0),
+                        labelStyle: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400),
+                        prefixIcon: const Icon(Icons.person,
+                            color: Colors.black, size: 18),
+                        enabledBorder: OutlineInputBorder(
+                            borderSide:
+                                const BorderSide(color: Colors.grey, width: 2),
+                            borderRadius: BorderRadius.circular(10)),
+                        floatingLabelStyle:
+                            const TextStyle(color: Colors.black, fontSize: 18),
+                      ),
+                    ),
+                    Obx(() => controller.emailError.value.isNotEmpty
+                        ? Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: Text(
+                              controller.emailError.value,
+                              style: const TextStyle(color: Colors.red),
+                            ),
+                          )
+                        : const SizedBox.shrink()),
+                  ],
                 ),
               ),
               const SizedBox(height: 40),
               FadeInUp(
                 delay: const Duration(microseconds: 800),
                 duration: const Duration(milliseconds: 1500),
-                child: TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                      focusedBorder: OutlineInputBorder(
-                        borderSide:
-                            const BorderSide(color: Colors.black, width: 1.5),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      labelText: "Password",
-                      hintText: "Password",
-                      hintStyle: const TextStyle(
-                          color: Colors.lightBlue, fontSize: 14),
-                      labelStyle: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400),
-                      prefixIcon:
-                          const Icon(Icons.key, color: Colors.black, size: 18),
-                      enabledBorder: OutlineInputBorder(
+                child: Column(
+                  children: [
+                    TextField(
+                      controller: controller.pwdController,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
                           borderSide:
-                              const BorderSide(color: Colors.grey, width: 2),
-                          borderRadius: BorderRadius.circular(10)),
-                      floatingLabelStyle:
-                          const TextStyle(color: Colors.black, fontSize: 18)),
+                              const BorderSide(color: Colors.black, width: 1.5),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        labelText: "Password",
+                        hintText: "Password",
+                        hintStyle: const TextStyle(
+                            color: Colors.lightBlue, fontSize: 14),
+                        labelStyle: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400),
+                        prefixIcon: const Icon(Icons.key,
+                            color: Colors.black, size: 18),
+                        enabledBorder: OutlineInputBorder(
+                            borderSide:
+                                const BorderSide(color: Colors.grey, width: 2),
+                            borderRadius: BorderRadius.circular(10)),
+                        floatingLabelStyle:
+                            const TextStyle(color: Colors.black, fontSize: 18),
+                      ),
+                    ),
+                    Obx(() => controller.pwdError.value.isNotEmpty
+                        ? Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: Text(
+                              controller.pwdError.value,
+                              style: const TextStyle(color: Colors.red),
+                            ),
+                          )
+                        : const SizedBox.shrink()),
+                  ],
                 ),
               ),
               FadeInUp(
@@ -140,7 +170,7 @@ class LoginPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () => controller.onApplyButtonPressed(),
                       child: const Text(
                         "Apply to be tenant",
                         style: TextStyle(
