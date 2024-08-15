@@ -25,6 +25,8 @@ samples, guidance on mobile development, and a full API reference.
 
 
 
+<div style="display:inline-block">
 <img src="./static/screenshot_2024-08-15 165610.png" alt="splash screen" style="width:100px;height:200px; display:inline-block">
 <img src="./static/screenshot_2024-08-15 203104.png" alt="login page" style="width:100px;height:200px; display:inline-block">
 <img src="./static/screenshot_2024-08-15 203158.png" alt="apply page" style="width:100px;height:200px; display:inline-block">
+</div>
